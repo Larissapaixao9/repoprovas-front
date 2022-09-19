@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Signup() {
 
-    const URL = '/https://localhost:4000'
+    const URL = 'http://localhost:4000'
 
     const [loginUser, setLoginUser] = React.useState({
         email:"",

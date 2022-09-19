@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
 
-    const URL = '/https://localhost:4000'
+    const URL = 'http://localhost:4000'
 
     const [loginUser, setLoginUser] = React.useState({
         email:"",
@@ -34,12 +34,25 @@ export default function Home() {
     <GeneralStyled>
         <img src={headerImage}/>
         <h1>Login</h1>
+
         <button className="gitHubButton">Entrar com o github</button>
+
         <form onSubmit={sendLogin}>
-            <input type='text' placeholder="email" id="email" value={loginUser.email} onChange={(event)=>setLoginUser({...loginUser,email:event.target.value})}/>
-            <input type='text' placeholder="senha" id="password" value={loginUser.password} onChange={(event)=>setLoginUser({...loginUser,password:event.target.value})}/>
+
+            <input type='text' 
+            placeholder="email" 
+            id="email" 
+            value={loginUser.email} 
+            onChange={(event)=>setLoginUser({...loginUser,email:event.target.value})}/>
+
+            <input type='text' 
+            placeholder="senha" 
+            id="password" 
+            value={loginUser.password} 
+            onChange={(event)=>setLoginUser({...loginUser,password:event.target.value})}/>
 
             <button className="enterButton">entrar</button>
+            
         </form>
         <Link to='/signup'>
             <h3>Não tem cadastro? clique aqui</h3>
