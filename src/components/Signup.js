@@ -2,21 +2,21 @@ import React from "react";
 import headerImage from '../images/header.png'
 import styled from 'styled-components'
 import axios from 'axios'
-import Signup from "./Signup";
 import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Signup() {
 
     const URL = '/https://localhost:4000'
 
     const [loginUser, setLoginUser] = React.useState({
         email:"",
-        password:""
+        password:"",
+        confirmPassword:''
     })
     function sendLogin(event){
         event.preventDefault()
 
-        const promise = axios.post(`${URL}/signin`,loginUser)
+        const promise = axios.post(`${URL}/signup`,loginUser)
 
         promise.then((response)=>
             console.log(response.data)
@@ -33,17 +33,20 @@ export default function Home() {
   return (
     <GeneralStyled>
         <img src={headerImage}/>
-        <h1>Login</h1>
+        <h1>Cadastro</h1>
         <button className="gitHubButton">Entrar com o github</button>
         <form onSubmit={sendLogin}>
             <input type='text' placeholder="email" id="email" value={loginUser.email} onChange={(event)=>setLoginUser({...loginUser,email:event.target.value})}/>
             <input type='text' placeholder="senha" id="password" value={loginUser.password} onChange={(event)=>setLoginUser({...loginUser,password:event.target.value})}/>
+            <input type='text' placeholder="senha" id="confirmPassword" value={loginUser.confirmPassword} onChange={(event)=>setLoginUser({...loginUser, confirmPassword:event.target.value})}/>
 
             <button className="enterButton">entrar</button>
         </form>
-        <Link to='/signup'>
+        <Link to='/'>
             <h3>Não tem cadastro? clique aqui</h3>
         </Link>
+ 
+
     </GeneralStyled>
   )
 }
@@ -92,6 +95,3 @@ h3{
     cursor:pointer;
 }
 `
-
-
-
